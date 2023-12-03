@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ghost-config
+data:
+  database.json: |
+    {
+      "client": "mysql",
+      "connection": {
+        "host": "mysql",
+        "user": "ghost",
+        "password": "123456",
+        "database": "ghost_prod",
+        "charset": "utf8"
+      }
+    }
