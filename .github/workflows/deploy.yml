@@ -17,15 +17,18 @@ jobs:
       uses: docker/setup-buildx-action@v3.0.0
 
     - name: Build the Docker image
-      run: docker build -t gcr.io/newghostapp/ghost-app .
-
-    - name: Authenticate with GCR
-      run: echo ${{ secrets.GCP_KEY_FILE }} | base64 -d > key.json && gcloud auth activate-service-account --key-file=key.json
-
-    - name: Push to GCR
       run: |
-        docker tag gcr.io/newghostapp/ghost-app gcr.io/newghostapp/ghost-app:${{ github.sha }}
-        docker push gcr.io/newghostapp/ghost-app:${{ github.sha }}
+        docker build -t us-central1-docker.pkg.dev/new-ghostapp-12345/ghost-app .
+
+    - name: Authenticate with Artifact Registry
+      run: |
+        echo ${{ secrets.GCP_KEY_FILE }} | base64 -d > key.json
+        gcloud auth activate-service-account --key-file=key.json
+
+    - name: Push to Artifact Registry
+      run: |
+        docker tag us-central1-docker.pkg.dev/new-ghostapp-12345/ghost-app us-central1-docker.pkg.dev/new-ghostapp-12345/ghost-app:${{ github.sha }}
+        docker push us-central1-docker.pkg.dev/new-ghostapp-12345/ghost-app:${{ github.sha }}
 
   deploy:
     runs-on: ubuntu-latest
