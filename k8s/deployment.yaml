@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: ghost-app
-        image: gcr.io/newghostapp/ghost-app:${{ github.sha }}
+        image: us-central1-docker.pkg.dev/ghost-v4/ghost-app:${{ github.sha }}
         ports:
         - containerPort: 2368
 
