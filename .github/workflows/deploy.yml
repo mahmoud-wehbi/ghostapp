@@ -35,7 +35,7 @@ jobs:
 
     - name: Push to Artifact Registry
       run: |
-        docker tag us-central1-docker.pkg.dev/ghost-v4/ghost-app ghost-app:${{ github.sha }}
+        docker tag us-central1-docker.pkg.dev/ghost-v4/ghost-app:latest us-central1-docker.pkg.dev/ghost-v4/ghost-app:${{ github.sha }}
         docker push us-central1-docker.pkg.dev/ghost-v4/ghost-app:${{ github.sha }}
 
 
