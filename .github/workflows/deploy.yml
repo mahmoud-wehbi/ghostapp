@@ -29,10 +29,13 @@ jobs:
       run: |
         echo ${{ secrets.GCP_KEY_FILE }} | base64 -d > key.json
         gcloud auth activate-service-account --key-file=key.json
+        
+    - name: Display Docker Images
+      run: docker images
 
     - name: Push to Artifact Registry
       run: |
-        docker tag ghost-app us-central1-docker.pkg.dev/ghost-v4/ghost-app:${{ github.sha }}
+        docker tag us-central1-docker.pkg.dev/ghost-v4/ghost-app ghost-app:${{ github.sha }}
         docker push us-central1-docker.pkg.dev/ghost-v4/ghost-app:${{ github.sha }}
 
 
