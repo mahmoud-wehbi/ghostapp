@@ -12,6 +12,11 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+    - name: Debugging
+      run: |
+        echo "Current Directory: $(pwd)"
+        echo "Contents: $(ls -la)"
+        echo "Docker Images: $(docker images)"
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3.0.0
