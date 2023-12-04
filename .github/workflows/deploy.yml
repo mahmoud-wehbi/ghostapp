@@ -18,7 +18,7 @@ jobs:
 
     - name: Build the Docker image
       run: |
-        docker build -t us-central1-docker.pkg.dev/new-ghostapp-12345/ghost-app .
+        docker build -t us-central1-docker.pkg.dev/ghost-v4/ghost-app .
 
     - name: Authenticate with Artifact Registry
       run: |
@@ -27,8 +27,8 @@ jobs:
 
     - name: Push to Artifact Registry
       run: |
-        docker tag us-central1-docker.pkg.dev/new-ghostapp-12345/ghost-app us-central1-docker.pkg.dev/new-ghostapp-12345/ghost-app:${{ github.sha }}
-        docker push us-central1-docker.pkg.dev/new-ghostapp-12345/ghost-app:${{ github.sha }}
+        docker tag us-central1-docker.pkg.dev/ghost-v4/ghost-app us-central1-docker.pkg.dev/ghost-v4/ghost-app:${{ github.sha }}
+        docker push us-central1-docker.pkg.dev/ghost-v4/ghost-app:${{ github.sha }}
 
   deploy:
     runs-on: ubuntu-latest
