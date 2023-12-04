@@ -1,0 +1,17 @@
+apiVersion: deploy.cloud.google.com/v1beta1
+kind: DeliveryPipeline
+metadata:
+  name: ghost
+description: Prod ghost
+serialPipeline:
+  stages:
+    - targetId: prodghost
+---
+
+apiVersion: deploy.cloud.google.com/v1beta1
+kind: Target
+metadata:
+  name: prodghost
+description: prod Ghost
+gke:
+  cluster: projects/ghost-v4/locations/us-central1/clusters/ghost-v4-cluster
