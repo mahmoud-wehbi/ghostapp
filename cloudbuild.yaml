@@ -7,3 +7,4 @@ steps:
         --project=ghost-v4 && gcloud deploy releases create
         release-$BUILD_ID --delivery-pipeline=ghost
         --region=us-central1
+    entrypoint: bash
