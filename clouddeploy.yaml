@@ -14,4 +14,4 @@ metadata:
   name: prodghost
 description: prod Ghost
 gke:
-  cluster: projects/ghost-v4/locations/us-central1/clusters/ghost-v4-cluster
+  cluster: projects/ghost-v4/locations/us-central1/clusters/public-ghost-v5
